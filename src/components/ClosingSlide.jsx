@@ -373,15 +373,17 @@ function Page6() {
           </p>
           <a
             href="mailto:katherine.atmar@chenmed.com"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold min-h-[48px]"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold min-h-[48px]"
             style={{
               backgroundColor: 'rgba(255,255,255,0.15)',
               color: 'white',
-              fontSize: 'var(--font-size-sm)',
+              fontSize: 'clamp(12px, 3.2vw, 14px)',
               textDecoration: 'none',
+              maxWidth: '100%',
+              wordBreak: 'break-all',
             }}
           >
-            <Mail size={16} /> katherine.atmar@chenmed.com
+            <Mail size={16} className="flex-shrink-0" /> katherine.atmar@chenmed.com
           </a>
         </motion.div>
 
