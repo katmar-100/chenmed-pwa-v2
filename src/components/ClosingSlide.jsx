@@ -104,14 +104,10 @@ function Page1() {
               className="rounded-2xl p-4"
               style={{ backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}
             >
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 flex items-center justify-center" style={{ width: '54px' }}>
-                  <span className="font-bold" style={{ fontSize: 'clamp(22px, 6vw, 28px)', color: 'white', lineHeight: 1 }}>{m.value}</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="font-semibold" style={{ fontSize: 'var(--font-size-sm)', color: 'rgba(255,255,255,0.9)', lineHeight: 1.3, display: 'block' }}>{m.label}</span>
-                  <p style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.55)', marginTop: '2px', lineHeight: 1.4 }}>{m.detail}</p>
-                </div>
+              <div className="text-center">
+                <span className="font-bold" style={{ fontSize: 'clamp(26px, 7vw, 34px)', color: 'white', lineHeight: 1 }}>{m.value}</span>
+                <p className="font-semibold" style={{ fontSize: 'var(--font-size-sm)', color: 'rgba(255,255,255,0.9)', marginTop: '4px' }}>{m.label}</p>
+                <p style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.55)', marginTop: '2px' }}>{m.detail}</p>
               </div>
             </motion.div>
           );
