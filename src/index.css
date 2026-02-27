@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Typography */
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 20px;
+  --font-size-lg: 24px;
+  --font-size-xl: 28px;
+  --font-size-2xl: 34px;
+  --line-height: 1.7;
+
+  /* ChenMed Classic Theme */
+  --color-navy: #2D2B55;
+  --color-navy-light: #3D3B65;
+  --color-teal: #0D7C7C;
+  --color-teal-light: #1A9E8F;
+  --color-teal-pale: #E8F5F3;
+  --color-purple: #9B4DCA;
+  --color-purple-soft: #C77DBA;
+  --color-purple-pale: #F3EBF8;
+  --color-bg: #F8F6FA;
+  --color-card: #FFFFFF;
+  --color-surface-muted: #EDEAF2;
+  --color-text: #4A4458;
+  --color-text-heading: #2D2B55;
+  --color-text-muted: #8E849B;
+  --color-success: #1A9E8F;
+  --color-warning: #E5A100;
+  --color-danger: #D94F4F;
+  --color-star: #F5B731;
+  --color-shadow: rgba(45, 43, 85, 0.08);
+
+  /* Layout */
+  --nav-height: 76px;
+  --radius: 1rem;
+  --radius-lg: 1.5rem;
+}
+
+/* Font size modes */
+.font-large { --font-size-xs: 16px; --font-size-sm: 18px; --font-size-base: 24px; --font-size-lg: 28px; --font-size-xl: 32px; --font-size-2xl: 38px; }
+.font-xlarge { --font-size-xs: 18px; --font-size-sm: 22px; --font-size-base: 28px; --font-size-lg: 32px; --font-size-xl: 36px; --font-size-2xl: 42px; }
+
+/* Ocean Calm theme */
+.theme-ocean {
+  --color-navy: #1B3A4B; --color-navy-light: #2C4F5F;
+  --color-teal: #0891B2; --color-teal-light: #22D3EE; --color-teal-pale: #E0F7FA;
+  --color-purple: #6366F1; --color-purple-soft: #A5B4FC; --color-purple-pale: #EEF2FF;
+  --color-bg: #F0F9FF; --color-card: #FFFFFF; --color-surface-muted: #E0F2FE;
+  --color-text: #334155; --color-text-heading: #1B3A4B; --color-text-muted: #94A3B8;
+  --color-success: #10B981; --color-shadow: rgba(27, 58, 75, 0.08);
+}
+
+/* Sunset Warm theme */
+.theme-sunset {
+  --color-navy: #7C2D12; --color-navy-light: #9A3412;
+  --color-teal: #EA580C; --color-teal-light: #FB923C; --color-teal-pale: #FFF7ED;
+  --color-purple: #DB2777; --color-purple-soft: #F472B6; --color-purple-pale: #FFF1F2;
+  --color-bg: #FFFBF5; --color-card: #FFFFFF; --color-surface-muted: #F9E8F4;
+  --color-text: #44403C; --color-text-heading: #7C2D12; --color-text-muted: #A8A29E;
+  --color-success: #16A34A; --color-shadow: rgba(124, 45, 18, 0.08);
+}
+
+/* High Contrast theme */
+.theme-contrast {
+  --color-navy: #000000; --color-navy-light: #1a1a1a;
+  --color-teal: #006666; --color-teal-light: #008080; --color-teal-pale: #E0F0F0;
+  --color-purple: #7B2D8E; --color-purple-soft: #9B4DCA; --color-purple-pale: #F0E0F5;
+  --color-bg: #FFFFFF; --color-card: #FFFFFF; --color-surface-muted: #F0F0F0;
+  --color-text: #000000; --color-text-heading: #000000; --color-text-muted: #333333;
+  --color-success: #006600; --color-shadow: rgba(0, 0, 0, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-size: var(--font-size-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0; padding: 0;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 700; color: var(--color-text-heading); }
+h1 { font-size: var(--font-size-2xl); }
+h2 { font-size: var(--font-size-xl); font-weight: 700; }
+h3, h4 { font-size: var(--font-size-lg); font-weight: 600; }
+strong, b { font-weight: 700; }
+
+/* Lucide icon global stroke weight for readability */
+svg.lucide { stroke-width: 2.25; }
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+button, a, [role="button"] { min-height: 48px; }
+
+.page-content { padding-bottom: calc(var(--nav-height) + 20px); }
+
+/* Scrollbar */
+html { overflow-y: scroll; }
+::-webkit-scrollbar { width: 0px; background: transparent; }
+
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
