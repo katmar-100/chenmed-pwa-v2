@@ -17,7 +17,7 @@ const slides = [
     icon: Lightbulb,
     heading: 'The Problem',
     bullets: [
-      `ChenMed's patients are mostly seniors\u00A0\u2014 65 and\u00A0older.`,
+      `ChenMed\u2019s patients are seniors\u00A0\u2014 65 years old and\u00A0older.`,
       `Right now, the way they interact with their care is fragmented: paper handouts, phone calls, and family members helping them keep\u00A0track.`,
       `Every major health system is investing in digital patient experiences\u00A0\u2014 but they're building for younger, tech-savvy\u00A0users.`,
       `Nobody is building something truly designed for\u00A0seniors. Something beautiful, simple, and actually enjoyable to\u00A0use.`,

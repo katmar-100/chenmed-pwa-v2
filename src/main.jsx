@@ -8,8 +8,15 @@ import { SunnyProvider } from './context/SunnyContext';
 import './index.css';
 
 // Register service worker with auto-update
-// When a new version is detected, it will activate immediately and reload the page
+// Check for updates every 60 seconds and reload automatically when found
 const updateSW = registerSW({
+  onRegisteredSW(swUrl, registration) {
+    if (registration) {
+      setInterval(() => {
+        registration.update();
+      }, 60 * 1000); // check for new version every 60 seconds
+    }
+  },
   onNeedRefresh() {
     // New content available — reload automatically
     updateSW(true);
