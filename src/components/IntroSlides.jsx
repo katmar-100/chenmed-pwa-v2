@@ -266,38 +266,36 @@ export default function IntroSlides({ onComplete }) {
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* Animated pulse ring */}
+                  {/* Animated pulse rings */}
                   <motion.div
                     className="absolute inset-0 rounded-full"
                     style={{
-                      border: '3px solid var(--color-teal)',
-                      opacity: 0,
+                      border: '2px solid var(--color-teal)',
                     }}
                     animate={{
-                      scale: [1, 1.35],
-                      opacity: [0.5, 0],
+                      scale: [1, 1.5],
+                      opacity: [0.4, 0],
                     }}
                     transition={{
-                      duration: 1.8,
+                      duration: 3,
                       repeat: Infinity,
-                      ease: 'easeOut',
+                      ease: [0.4, 0, 0.2, 1],
                     }}
                   />
                   <motion.div
                     className="absolute inset-0 rounded-full"
                     style={{
-                      border: '3px solid var(--color-teal)',
-                      opacity: 0,
+                      border: '2px solid var(--color-teal)',
                     }}
                     animate={{
-                      scale: [1, 1.35],
-                      opacity: [0.5, 0],
+                      scale: [1, 1.5],
+                      opacity: [0.4, 0],
                     }}
                     transition={{
-                      duration: 1.8,
+                      duration: 3,
                       repeat: Infinity,
-                      ease: 'easeOut',
-                      delay: 0.9,
+                      ease: [0.4, 0, 0.2, 1],
+                      delay: 1.5,
                     }}
                   />
                   <div className="flex flex-col items-center gap-1.5">
