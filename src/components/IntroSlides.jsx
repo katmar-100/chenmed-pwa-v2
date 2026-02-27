@@ -8,7 +8,7 @@ const slides = [
     label: 'Context',
     icon: null,
     heading: `Before we\u00A0begin\u2026`,
-    body: `I want to show you something I built this\u00A0weekend.\n\nBut before I do, I want to set the context for why I built it\u00A0\u2014 because I think there\u2019s a significant growth opportunity here that sits right at the intersection of marketing, patient experience, and\u00A0retention.`,
+    body: `I want to show you something I\u00A0built.\n\nBut before I do, I want to set the context for why I built it\u00A0\u2014 because I think there\u2019s a significant growth opportunity here that sits right at the intersection of marketing, patient experience, and\u00A0retention.`,
     accent: 'var(--color-navy)',
   },
   {
@@ -52,7 +52,7 @@ const slides = [
     label: 'Demo',
     icon: Play,
     heading: 'Let me show you what this could look\u00A0like.',
-    body: 'I built a working prototype this weekend to bring this idea to\u00A0life. Let me walk you through\u00A0it.',
+    body: 'I built a working prototype to bring this idea to\u00A0life. Let me walk you through\u00A0it.',
     cta: true,
     accent: 'var(--color-teal)',
   },
