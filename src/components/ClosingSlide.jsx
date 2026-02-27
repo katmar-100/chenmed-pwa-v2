@@ -105,15 +105,12 @@ function Page1() {
               style={{ backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}
             >
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}>
-                  <Icon size={20} style={{ color: 'white' }} />
+                <div className="flex-shrink-0 flex items-center justify-center" style={{ width: '54px' }}>
+                  <span className="font-bold" style={{ fontSize: 'clamp(22px, 6vw, 28px)', color: 'white', lineHeight: 1 }}>{m.value}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-bold" style={{ fontSize: 'var(--font-size-xl)', color: 'white' }}>{m.value}</span>
-                    <span className="font-semibold" style={{ fontSize: 'var(--font-size-sm)', color: 'rgba(255,255,255,0.85)' }}>{m.label}</span>
-                  </div>
-                  <p style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.6)', marginTop: '2px' }}>{m.detail}</p>
+                  <span className="font-semibold" style={{ fontSize: 'var(--font-size-sm)', color: 'rgba(255,255,255,0.9)', lineHeight: 1.3, display: 'block' }}>{m.label}</span>
+                  <p style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.55)', marginTop: '2px', lineHeight: 1.4 }}>{m.detail}</p>
                 </div>
               </div>
             </motion.div>
@@ -320,12 +317,13 @@ function Page5() {
 // ===== PAGE 6: Contact =====
 function Page6() {
   return (
-    <div className="flex-1 flex flex-col justify-center px-6">
+    <div className="flex-1 flex flex-col justify-center px-6" style={{ overflow: 'hidden' }}>
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.3, duration: 1 }}
         className="text-center"
+        style={{ overflow: 'hidden' }}
       >
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -356,8 +354,8 @@ function Page6() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="rounded-2xl p-6"
-          style={{ backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}
+          className="rounded-2xl p-5"
+          style={{ backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)', overflow: 'hidden' }}
         >
           <img
             src="/chenmed-bug-white.png"
@@ -373,14 +371,15 @@ function Page6() {
           </p>
           <a
             href="mailto:katherine.atmar@chenmed.com"
-            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold min-h-[48px]"
+            className="flex items-center justify-center gap-2 py-3 rounded-full font-semibold min-h-[48px]"
             style={{
               backgroundColor: 'rgba(255,255,255,0.15)',
               color: 'white',
-              fontSize: 'clamp(12px, 3.2vw, 14px)',
+              fontSize: 'clamp(11px, 3vw, 14px)',
               textDecoration: 'none',
-              maxWidth: '100%',
-              wordBreak: 'break-all',
+              width: '100%',
+              boxSizing: 'border-box',
+              overflow: 'hidden',
             }}
           >
             <Mail size={16} className="flex-shrink-0" /> katherine.atmar@chenmed.com
