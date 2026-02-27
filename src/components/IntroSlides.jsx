@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ChevronLeft, Lightbulb, TrendingUp, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Sparkles, Lightbulb, TrendingUp, Play } from 'lucide-react';
 
 const slides = [
   {
     id: 'context',
     label: 'Context',
-    icon: null,
+    icon: Sparkles,
+    iconBg: 'rgba(45,43,85,0.1)',
     heading: `I built\u00A0something.`,
     body: `Before I show you, let me set the\u00A0stage.\n\nThere\u2019s a massive growth opportunity sitting at the intersection of marketing, patient experience, and retention\u00A0\u2014 and no one\u2019s going after\u00A0it.`,
     accent: 'var(--color-navy)',
@@ -15,6 +16,7 @@ const slides = [
     id: 'problem',
     label: 'Problem',
     icon: Lightbulb,
+    iconBg: 'rgba(224,89,139,0.1)',
     heading: 'Seniors are\u00A0underserved.',
     bullets: [
       `ChenMed\u2019s patients are seniors\u00A0\u2014 65 years old and\u00A0older.`,
@@ -29,6 +31,7 @@ const slides = [
     id: 'opportunity',
     label: 'Opportunity',
     icon: TrendingUp,
+    iconBg: 'rgba(139,92,246,0.1)',
     heading: 'What if seniors loved their health\u00A0app?',
     intro: `Picture an app seniors actually want to open\u00A0\u2014 one that helps them take their meds, understand their vitals, and feel connected to their care team. Three things\u00A0happen:`,
     numbered: [
@@ -51,6 +54,7 @@ const slides = [
     id: 'demo',
     label: 'Demo',
     icon: Play,
+    iconBg: 'rgba(13,124,124,0.1)',
     heading: 'See it in\u00A0action.',
     body: 'I built a working prototype to show what this could look and feel\u00A0like. Take a\u00A0look.',
     cta: true,
@@ -139,7 +143,7 @@ export default function IntroSlides({ onComplete }) {
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.15, type: 'spring', damping: 12 }}
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                style={{ backgroundColor: slide.accent + '18' }}
+                style={{ backgroundColor: slide.iconBg }}
               >
                 <slide.icon size={28} style={{ color: slide.accent }} />
               </motion.div>
@@ -242,25 +246,65 @@ export default function IntroSlides({ onComplete }) {
             {/* CTA on last slide */}
             {slide.cta && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="flex-1 flex items-end mt-8"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, type: 'spring', damping: 10, stiffness: 200 }}
+                className="flex-1 flex flex-col items-center justify-center mt-8"
               >
-                <button
+                <motion.button
                   onClick={onComplete}
-                  className="w-full flex items-center justify-center gap-3 rounded-2xl shadow-lg min-h-[56px] font-semibold"
+                  className="relative flex items-center justify-center rounded-full font-bold"
                   style={{
-                    padding: '16px 24px',
+                    width: 140,
+                    height: 140,
                     background: 'linear-gradient(135deg, var(--color-teal), var(--color-teal-light))',
                     color: 'white',
-                    fontSize: 'var(--font-size-base)',
+                    fontSize: '20px',
                     border: 'none',
+                    boxShadow: '0 8px 30px rgba(13,124,124,0.4)',
                   }}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Play size={20} fill="white" />
-                  Let's go!
-                </button>
+                  {/* Animated pulse ring */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      border: '3px solid var(--color-teal)',
+                      opacity: 0,
+                    }}
+                    animate={{
+                      scale: [1, 1.35],
+                      opacity: [0.5, 0],
+                    }}
+                    transition={{
+                      duration: 1.8,
+                      repeat: Infinity,
+                      ease: 'easeOut',
+                    }}
+                  />
+                  <motion.div
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      border: '3px solid var(--color-teal)',
+                      opacity: 0,
+                    }}
+                    animate={{
+                      scale: [1, 1.35],
+                      opacity: [0.5, 0],
+                    }}
+                    transition={{
+                      duration: 1.8,
+                      repeat: Infinity,
+                      ease: 'easeOut',
+                      delay: 0.9,
+                    }}
+                  />
+                  <div className="flex flex-col items-center gap-1.5">
+                    <Play size={28} fill="white" />
+                    <span>Let's go!</span>
+                  </div>
+                </motion.button>
               </motion.div>
             )}
           </motion.div>

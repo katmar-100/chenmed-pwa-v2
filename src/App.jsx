@@ -74,6 +74,13 @@ function AppContent() {
 export default function App() {
   const [screen, setScreen] = useState('title'); // 'title' → 'intro' → 'app'
 
+  // Listen for restart-demo event from anywhere in the app
+  useEffect(() => {
+    const handleRestart = () => setScreen('intro');
+    window.addEventListener('restart-demo', handleRestart);
+    return () => window.removeEventListener('restart-demo', handleRestart);
+  }, []);
+
   if (screen === 'title') {
     return <TitleScreen onContinue={() => setScreen('intro')} />;
   }

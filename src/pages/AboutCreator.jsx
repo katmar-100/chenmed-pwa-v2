@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PageShell from '../components/ui/PageShell';
 import Card from '../components/ui/Card';
 import ReturnCapsules from '../components/ui/ReturnCapsules';
-import { ArrowLeft, Eye, Hammer, Rocket, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Eye, Hammer, Rocket, BarChart3, RotateCcw } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function AboutCreator() {
@@ -147,20 +147,37 @@ export default function AboutCreator() {
           transition={{ delay: 0.7 }}
           className="flex justify-center pb-8"
         >
-          <button
-            onClick={() => navigate('/end-demo')}
-            className="px-4 py-1.5 rounded-full"
-            style={{
-              fontSize: '10px',
-              letterSpacing: '0.12em',
-              fontWeight: 600,
-              color: 'var(--color-text-muted)',
-              backgroundColor: 'var(--color-surface-muted)',
-              opacity: 0.5,
-            }}
-          >
-            END DEMO
-          </button>
+          <div className="flex flex-col items-center gap-3">
+            <button
+              onClick={() => navigate('/end-demo')}
+              className="px-4 py-1.5 rounded-full"
+              style={{
+                fontSize: '10px',
+                letterSpacing: '0.12em',
+                fontWeight: 600,
+                color: 'var(--color-text-muted)',
+                backgroundColor: 'var(--color-surface-muted)',
+                opacity: 0.5,
+              }}
+            >
+              END DEMO
+            </button>
+            <button
+              onClick={() => window.dispatchEvent(new Event('restart-demo'))}
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-full"
+              style={{
+                fontSize: '10px',
+                letterSpacing: '0.12em',
+                fontWeight: 600,
+                color: 'var(--color-text-muted)',
+                backgroundColor: 'var(--color-surface-muted)',
+                opacity: 0.5,
+              }}
+            >
+              <RotateCcw size={10} />
+              RESTART DEMO
+            </button>
+          </div>
         </motion.div>
       </div>
 

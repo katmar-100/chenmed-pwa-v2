@@ -523,7 +523,7 @@ export default function SunnyGuide() {
                 animate={{ opacity: introAnimatingOut ? 0 : 1, y: introAnimatingOut ? 20 : 0 }}
                 transition={{ delay: introAnimatingOut ? 0 : 0.4, duration: 0.3 }}
               >
-                Hi! I'm <strong>Sunny</strong>, your friendly guide! I'll be right here in the corner if you ever need help. Just tap me&nbsp;anytime! 🌟
+                Hi! I'm <strong>Sunny</strong>, your friendly guide! I'll be right here in the corner if you ever need help. Tap me&nbsp;anytime&nbsp;🌟
               </motion.div>
             </motion.div>
           </motion.div>
