@@ -166,7 +166,7 @@ export default function AppointmentDetail() {
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowDocBio(true)}
-          className="inline-block mb-3 relative"
+          className="inline-block mb-2 relative"
           style={{ background: 'none', border: 'none', padding: 0 }}
           aria-label={`View ${doc.name}'s bio`}
         >
@@ -185,8 +185,10 @@ export default function AppointmentDetail() {
             <Info size={14} style={{ color: 'white' }} />
           </div>
         </motion.button>
-        <StarRating rating={doc.rating} size={18} />
-        <h2 className="font-semibold mt-2" style={{ fontSize: 'var(--font-size-xl)', color: 'var(--color-text-heading)' }}>{doc.name}</h2>
+        <div className="flex justify-center mb-2">
+          <StarRating rating={doc.rating} size={18} />
+        </div>
+        <h2 className="font-semibold" style={{ fontSize: 'var(--font-size-xl)', color: 'var(--color-text-heading)' }}>{doc.name}</h2>
         <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-muted)' }}>{doc.specialty} &bull; {doc.credentials}</p>
         <button
           onClick={() => setShowDocBio(true)}
@@ -199,28 +201,28 @@ export default function AppointmentDetail() {
 
       <div className="space-y-4">
         <Card animate={false}>
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <Calendar size={20} style={{ color: 'var(--color-teal)' }} />
-              <div>
-                <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>{formatDate(appt.date)}</p>
-                <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{appt.time}</p>
+          <div className="space-y-4" style={{ textAlign: 'center' }}>
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--color-teal-pale)' }}>
+                <Calendar size={20} style={{ color: 'var(--color-teal)' }} />
               </div>
+              <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>{formatDate(appt.date)}</p>
+              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{appt.time}</p>
             </div>
-            <div className="flex items-start gap-3">
-              <MapPin size={20} style={{ color: 'var(--color-teal)' }} className="flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>{appt.location}</p>
-                <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{appt.address}</p>
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--color-teal-pale)' }}>
+                <MapPin size={20} style={{ color: 'var(--color-teal)' }} />
               </div>
+              <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>{appt.location}</p>
+              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{appt.address}</p>
             </div>
           </div>
         </Card>
 
         {appt.prep && (
           <Card animate={false}>
-            <p className="font-semibold mb-2" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-heading)' }}>How to Prepare</p>
-            <div className="rounded-xl p-3" style={{ backgroundColor: 'var(--color-teal-pale)' }}>
+            <p className="font-semibold mb-2" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-teal)', textAlign: 'center' }}>How to Prepare</p>
+            <div className="rounded-xl p-3" style={{ backgroundColor: 'var(--color-teal-pale)', textAlign: 'center' }}>
               <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)' }}>{appt.prep}</p>
             </div>
           </Card>
