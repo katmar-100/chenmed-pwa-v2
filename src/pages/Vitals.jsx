@@ -121,37 +121,33 @@ export default function Vitals() {
           </motion.div>
 
           <Card animate={false}>
-            <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)' }}>{bpSummary(latest.systolic, latest.diastolic)}</p>
-            <div className="flex gap-2 mt-3">
+            <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)', textAlign: 'center' }}>{bpSummary(latest.systolic, latest.diastolic)}</p>
+            <div className="flex justify-center gap-6 mt-4">
               <button
                 onClick={() => handleSpeak(bpSummary(latest.systolic, latest.diastolic))}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px]"
-                style={{
-                  fontSize: 'var(--font-size-xs)',
-                  fontWeight: 600,
-                  backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)',
-                  color: speaking ? 'white' : 'var(--color-teal)',
-                }}
+                className="flex flex-col items-center gap-1.5 min-h-[48px]"
+                style={{ fontSize: 'var(--font-size-xs)', fontWeight: 600, color: speaking ? 'white' : 'var(--color-teal)', background: 'none', border: 'none' }}
               >
-                <Volume2 size={14} /> {speaking ? 'Stop' : 'Read Aloud'}
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)' }}>
+                  <Volume2 size={22} style={{ color: speaking ? 'white' : 'var(--color-teal)' }} />
+                </div>
+                <span style={{ color: 'var(--color-teal)' }}>{speaking ? 'Stop' : 'Read Aloud'}</span>
               </button>
               <button
                 onClick={() => handleShare(`My blood pressure: ${latest.systolic}/${latest.diastolic} mmHg — ${status.label}. Recorded ${formatDateMedium(latest.date)}.`)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px]"
-                style={{
-                  fontSize: 'var(--font-size-xs)',
-                  fontWeight: 600,
-                  backgroundColor: shared ? 'var(--color-teal)' : 'var(--color-purple-pale)',
-                  color: shared ? 'white' : 'var(--color-purple)',
-                }}
+                className="flex flex-col items-center gap-1.5 min-h-[48px]"
+                style={{ fontSize: 'var(--font-size-xs)', fontWeight: 600, background: 'none', border: 'none' }}
               >
-                <Share2 size={14} /> {shared ? 'Shared!' : 'Share with Family'}
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: shared ? 'var(--color-teal)' : 'var(--color-purple-pale)' }}>
+                  <Share2 size={22} style={{ color: shared ? 'white' : 'var(--color-purple)' }} />
+                </div>
+                <span style={{ color: 'var(--color-purple)' }}>{shared ? 'Shared!' : 'Share with Family'}</span>
               </button>
             </div>
           </Card>
 
           <Card animate={false} padding="p-3">
-            <p className="font-semibold mb-2 px-2" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-heading)' }}>Blood Pressure Trend</p>
+            <p className="font-semibold mb-2 px-2" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-heading)', textAlign: 'center' }}>Blood Pressure Trend</p>
             <div style={{ width: '100%', height: 200 }}>
               <ResponsiveContainer>
                 <AreaChart data={chartData} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
@@ -173,7 +169,7 @@ export default function Vitals() {
           </Card>
 
           <Card onClick={() => setShowTips(true)} padding="p-4">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col items-center gap-2 text-center">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'var(--color-teal-pale)' }}>
                 <Lightbulb size={20} style={{ color: 'var(--color-teal)' }} />
               </div>
@@ -182,7 +178,7 @@ export default function Vitals() {
           </Card>
 
           <Card onClick={() => setShowGroup(true)} padding="p-4">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col items-center gap-2 text-center">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'var(--color-purple-pale)' }}>
                 <Users size={20} style={{ color: 'var(--color-purple)' }} />
               </div>
@@ -241,24 +237,23 @@ export default function Vitals() {
           </div>
 
           <Card animate={false}>
-            <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)' }}>{summary}</p>
-            <div className="flex gap-2 mt-3">
+            <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)', textAlign: 'center' }}>{summary}</p>
+            <div className="flex justify-center gap-6 mt-4">
               <button
                 onClick={() => handleSpeak(summary)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px]"
-                style={{
-                  fontSize: 'var(--font-size-xs)', fontWeight: 600,
-                  backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)',
-                  color: speaking ? 'white' : 'var(--color-teal)',
-                }}
+                className="flex flex-col items-center gap-1.5 min-h-[48px]"
+                style={{ fontSize: 'var(--font-size-xs)', fontWeight: 600, background: 'none', border: 'none' }}
               >
-                <Volume2 size={14} /> {speaking ? 'Stop' : 'Read Aloud'}
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)' }}>
+                  <Volume2 size={22} style={{ color: speaking ? 'white' : 'var(--color-teal)' }} />
+                </div>
+                <span style={{ color: 'var(--color-teal)' }}>{speaking ? 'Stop' : 'Read Aloud'}</span>
               </button>
             </div>
           </Card>
 
           <Card animate={false} padding="p-3">
-            <p className="font-semibold mb-2 px-2" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-heading)' }}>Cholesterol Trend</p>
+            <p className="font-semibold mb-2 px-2" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-heading)', textAlign: 'center' }}>Cholesterol Trend</p>
             <div style={{ width: '100%', height: 200 }}>
               <ResponsiveContainer>
                 <AreaChart data={chartData} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
@@ -325,18 +320,17 @@ export default function Vitals() {
           </motion.div>
 
           <Card animate={false}>
-            <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)' }}>{summary}</p>
-            <div className="flex gap-2 mt-3">
+            <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)', textAlign: 'center' }}>{summary}</p>
+            <div className="flex justify-center gap-6 mt-4">
               <button
                 onClick={() => handleSpeak(summary)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px]"
-                style={{
-                  fontSize: 'var(--font-size-xs)', fontWeight: 600,
-                  backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)',
-                  color: speaking ? 'white' : 'var(--color-teal)',
-                }}
+                className="flex flex-col items-center gap-1.5 min-h-[48px]"
+                style={{ fontSize: 'var(--font-size-xs)', fontWeight: 600, background: 'none', border: 'none' }}
               >
-                <Volume2 size={14} /> {speaking ? 'Stop' : 'Read Aloud'}
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)' }}>
+                  <Volume2 size={22} style={{ color: speaking ? 'white' : 'var(--color-teal)' }} />
+                </div>
+                <span style={{ color: 'var(--color-teal)' }}>{speaking ? 'Stop' : 'Read Aloud'}</span>
               </button>
             </div>
           </Card>
@@ -423,37 +417,33 @@ export default function Vitals() {
         </motion.div>
 
         <Card animate={false}>
-          <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)' }}>{summaries[activeTab]}</p>
-          <div className="flex gap-2 mt-3">
+          <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)', textAlign: 'center' }}>{summaries[activeTab]}</p>
+          <div className="flex justify-center gap-6 mt-4">
             <button
               onClick={() => handleSpeak(summaries[activeTab])}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px]"
-              style={{
-                fontSize: 'var(--font-size-xs)',
-                fontWeight: 600,
-                backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)',
-                color: speaking ? 'white' : 'var(--color-teal)',
-              }}
+              className="flex flex-col items-center gap-1.5 min-h-[48px]"
+              style={{ fontSize: 'var(--font-size-xs)', fontWeight: 600, background: 'none', border: 'none' }}
             >
-              <Volume2 size={14} /> {speaking ? 'Stop' : 'Read Aloud'}
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)' }}>
+                <Volume2 size={22} style={{ color: speaking ? 'white' : 'var(--color-teal)' }} />
+              </div>
+              <span style={{ color: 'var(--color-teal)' }}>{speaking ? 'Stop' : 'Read Aloud'}</span>
             </button>
             <button
               onClick={() => handleShare(`My ${tabs.find(t => t.key === activeTab)?.label}: ${latest.value} ${units[activeTab]} — ${statusFn.label}. Recorded ${formatDateMedium(latest.date)}.`)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px]"
-              style={{
-                fontSize: 'var(--font-size-xs)',
-                fontWeight: 600,
-                backgroundColor: shared ? 'var(--color-teal)' : 'var(--color-purple-pale)',
-                color: shared ? 'white' : 'var(--color-purple)',
-              }}
+              className="flex flex-col items-center gap-1.5 min-h-[48px]"
+              style={{ fontSize: 'var(--font-size-xs)', fontWeight: 600, background: 'none', border: 'none' }}
             >
-              <Share2 size={14} /> {shared ? 'Shared!' : 'Share with Family'}
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: shared ? 'var(--color-teal)' : 'var(--color-purple-pale)' }}>
+                <Share2 size={22} style={{ color: shared ? 'white' : 'var(--color-purple)' }} />
+              </div>
+              <span style={{ color: 'var(--color-purple)' }}>{shared ? 'Shared!' : 'Share with Family'}</span>
             </button>
           </div>
         </Card>
 
         <Card animate={false} padding="p-3">
-          <p className="font-semibold mb-2 px-2" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-heading)' }}>Trend</p>
+          <p className="font-semibold mb-2 px-2" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-heading)', textAlign: 'center' }}>Trend</p>
           <div style={{ width: '100%', height: 180 }}>
             <ResponsiveContainer>
               <AreaChart data={chartData} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
@@ -475,7 +465,7 @@ export default function Vitals() {
 
         {activeTab === 'glucose' && (
           <Card onClick={() => setShowTips(true)} padding="p-4">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col items-center gap-2 text-center">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'var(--color-teal-pale)' }}>
                 <Lightbulb size={20} style={{ color: 'var(--color-teal)' }} />
               </div>

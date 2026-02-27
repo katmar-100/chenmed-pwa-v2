@@ -37,7 +37,6 @@ export default function Explore() {
             </div>
             <div>
               <p className="font-semibold" style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-heading)' }}>{label}</p>
-              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text)' }}>{tagline}</p>
             </div>
           </motion.button>
         ))}
