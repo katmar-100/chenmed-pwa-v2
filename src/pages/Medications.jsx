@@ -135,10 +135,11 @@ export default function Medications() {
             <motion.div key={med.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}>
               <Card animate={false} padding="p-0" className="relative overflow-visible">
                 <div
-                  className="flex items-center gap-3 p-4 transition-colors duration-300 rounded-2xl"
+                  className="p-4 transition-colors duration-300 rounded-2xl"
                   style={{ backgroundColor: med.takenToday ? 'var(--color-teal-pale)' : 'var(--color-card)' }}
                 >
-                  <div className="flex-shrink-0">
+                  {/* Pill illustration centered above */}
+                  <div className="flex justify-center mb-2">
                     <motion.button
                       whileTap={{ scale: 0.9 }}
                       onClick={(e) => handlePillTap(e, med.id)}
@@ -149,39 +150,44 @@ export default function Medications() {
                       <PillIcon type={med.pillType} size={48} />
                     </motion.button>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>
-                      {med.name} <span style={{ fontWeight: 400, color: 'var(--color-text-muted)' }}>{med.dose}</span>
-                    </p>
-                    <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{med.timeLabel}</p>
-                    <div className="flex items-center gap-1 mt-0.5">
-                      <TimeIcon size={14} style={{ color: 'var(--color-text-muted)' }} />
-                      <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>{med.timeOfDay}</span>
+                  {/* Medication details + Take button in a row */}
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>
+                        {med.name} <span style={{ fontWeight: 400, color: 'var(--color-text-muted)' }}>{med.dose}</span>
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{med.timeLabel}</p>
+                        <div className="flex items-center gap-1">
+                          <TimeIcon size={14} style={{ color: 'var(--color-text-muted)' }} />
+                          <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>{med.timeOfDay}</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setInfoMed(med)}
-                      className="w-10 h-10 min-h-[40px] min-w-[40px] rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: 'var(--color-surface-muted)' }}
-                      aria-label={`Info about ${med.name}`}
-                    >
-                      <Info size={16} style={{ color: 'var(--color-text-muted)' }} />
-                    </button>
-                    <motion.button
-                      whileTap={{ scale: 0.85 }}
-                      onClick={() => handleToggle(med.id)}
-                      className="flex items-center gap-1.5 px-3 py-2 rounded-xl font-semibold min-h-[48px]"
-                      style={{
-                        backgroundColor: med.takenToday ? 'var(--color-teal)' : 'var(--color-surface-muted)',
-                        color: med.takenToday ? 'white' : 'var(--color-text)',
-                        fontSize: 'var(--font-size-sm)',
-                      }}
-                      aria-pressed={med.takenToday}
-                      aria-label={`${med.name} — ${med.takenToday ? 'Taken' : 'Mark as taken'}`}
-                    >
-                      {med.takenToday ? <><Check size={18} /> Taken</> : 'Take'}
-                    </motion.button>
+                    <div className="flex flex-col items-center gap-1.5">
+                      <motion.button
+                        whileTap={{ scale: 0.85 }}
+                        onClick={() => handleToggle(med.id)}
+                        className="flex items-center gap-1.5 px-3 py-2 rounded-xl font-semibold min-h-[48px]"
+                        style={{
+                          backgroundColor: med.takenToday ? 'var(--color-teal)' : 'var(--color-surface-muted)',
+                          color: med.takenToday ? 'white' : 'var(--color-text)',
+                          fontSize: 'var(--font-size-sm)',
+                        }}
+                        aria-pressed={med.takenToday}
+                        aria-label={`${med.name} — ${med.takenToday ? 'Taken' : 'Mark as taken'}`}
+                      >
+                        {med.takenToday ? <><Check size={18} /> Taken</> : 'Take'}
+                      </motion.button>
+                      <button
+                        onClick={() => setInfoMed(med)}
+                        className="w-8 h-8 min-h-[32px] min-w-[32px] rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: 'var(--color-surface-muted)' }}
+                        aria-label={`Info about ${med.name}`}
+                      >
+                        <Info size={14} style={{ color: 'var(--color-text-muted)' }} />
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <AnimatePresence>
@@ -336,20 +342,20 @@ export default function Medications() {
       {/* Info Modal */}
       <Modal isOpen={!!infoMed} onClose={() => setInfoMed(null)} title={infoMed ? `${infoMed.name} ${infoMed.dose}` : ''}>
         {infoMed && (
-          <div className="space-y-4">
+          <div className="space-y-4" style={{ textAlign: 'center' }}>
             <div className="flex justify-center"><PillIcon type={infoMed.pillType} size={64} /></div>
-            <button
-              onClick={() => handleSpeak(`${infoMed.name} ${infoMed.dose}. ${infoMed.purpose}. ${infoMed.howToTake}. ${infoMed.sideEffects}`)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full min-h-[36px] mx-auto"
-              style={{
-                fontSize: 'var(--font-size-xs)',
-                fontWeight: 600,
-                backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)',
-                color: speaking ? 'white' : 'var(--color-teal)',
-              }}
-            >
-              <Volume2 size={14} /> {speaking ? 'Stop' : 'Read Aloud'}
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={() => handleSpeak(`${infoMed.name} ${infoMed.dose}. ${infoMed.purpose}. ${infoMed.howToTake}. ${infoMed.sideEffects}`)}
+                className="flex flex-col items-center gap-1.5 min-h-[48px]"
+                style={{ fontSize: 'var(--font-size-xs)', fontWeight: 600, background: 'none', border: 'none' }}
+              >
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: speaking ? 'var(--color-teal)' : 'var(--color-teal-pale)' }}>
+                  <Volume2 size={22} style={{ color: speaking ? 'white' : 'var(--color-teal)' }} />
+                </div>
+                <span style={{ color: 'var(--color-teal)' }}>{speaking ? 'Stop' : 'Read Aloud'}</span>
+              </button>
+            </div>
             {[
               ...(infoMed.physicalDescription ? [{ title: 'What it looks like', text: infoMed.physicalDescription }] : []),
               { title: 'What is this medication for?', text: infoMed.purpose },
@@ -358,7 +364,7 @@ export default function Medications() {
               { title: 'Talk to your doctor if...', text: infoMed.talkToDoctor },
             ].map(({ title, text }) => (
               <div key={title}>
-                <p className="font-semibold mb-1" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-heading)' }}>{title}</p>
+                <p className="font-semibold mb-1" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-teal)' }}>{title}</p>
                 <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)' }}>{text}</p>
               </div>
             ))}
