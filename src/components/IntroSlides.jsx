@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, Lightbulb, TrendingUp, Play } from 'lucide-react';
 
@@ -13,7 +13,7 @@ const slides = [
   },
   {
     id: 'problem',
-    label: 'The Problem',
+    label: 'Problem',
     icon: Lightbulb,
     heading: 'The Problem',
     bullets: [
@@ -27,7 +27,7 @@ const slides = [
   },
   {
     id: 'opportunity',
-    label: 'The Opportunity',
+    label: 'Opportunity',
     icon: TrendingUp,
     heading: 'The Opportunity',
     intro: `If ChenMed had a patient-facing app that seniors genuinely loved using\u00A0\u2014 one that helped them take their meds, understand their health, and feel connected to their care team\u00A0\u2014 three things\u00A0happen:`,
@@ -49,7 +49,7 @@ const slides = [
   },
   {
     id: 'demo',
-    label: 'The Demo',
+    label: 'Demo',
     icon: Play,
     heading: 'Let me show you what this could look\u00A0like.',
     body: 'I built a working prototype this weekend to bring this idea to\u00A0life. Let me walk you through\u00A0it.',
@@ -61,7 +61,15 @@ const slides = [
 export default function IntroSlides({ onComplete }) {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const contentRef = useRef(null);
   const slide = slides[current];
+
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+  }, [current]);
   const isLast = current === slides.length - 1;
   const isFirst = current === 0;
 
@@ -112,7 +120,7 @@ export default function IntroSlides({ onComplete }) {
       </div>
 
       {/* Slide content */}
-      <div className="flex-1 flex flex-col px-6 py-6 overflow-hidden">
+      <div ref={contentRef} className="flex-1 flex flex-col px-6 py-6 overflow-y-auto">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={slide.id}
