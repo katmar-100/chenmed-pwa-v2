@@ -104,10 +104,10 @@ function Page1() {
               className="rounded-2xl p-4"
               style={{ backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}
             >
-              <div className="text-center">
-                <span className="font-bold" style={{ fontSize: 'clamp(26px, 7vw, 34px)', color: 'white', lineHeight: 1 }}>{m.value}</span>
-                <p className="font-semibold" style={{ fontSize: 'var(--font-size-sm)', color: 'rgba(255,255,255,0.9)', marginTop: '4px' }}>{m.label}</p>
-                <p style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.55)', marginTop: '2px' }}>{m.detail}</p>
+              <div style={{ textAlign: 'center' }}>
+                <div className="font-bold" style={{ fontSize: 'clamp(28px, 8vw, 36px)', color: 'white', lineHeight: 1, marginBottom: '6px' }}>{m.value}</div>
+                <div className="font-semibold" style={{ fontSize: 'var(--font-size-sm)', color: 'rgba(255,255,255,0.9)', marginBottom: '3px' }}>{m.label}</div>
+                <div style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.55)' }}>{m.detail}</div>
               </div>
             </motion.div>
           );
