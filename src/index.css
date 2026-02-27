@@ -35,13 +35,14 @@
 
   /* Layout */
   --nav-height: 76px;
+  --font-size-nav: 11px;
   --radius: 1rem;
   --radius-lg: 1.5rem;
 }
 
 /* Font size modes */
-.font-large { --font-size-xs: 16px; --font-size-sm: 18px; --font-size-base: 24px; --font-size-lg: 28px; --font-size-xl: 32px; --font-size-2xl: 38px; }
-.font-xlarge { --font-size-xs: 18px; --font-size-sm: 22px; --font-size-base: 28px; --font-size-lg: 32px; --font-size-xl: 36px; --font-size-2xl: 42px; }
+.font-large { --font-size-xs: 16px; --font-size-sm: 18px; --font-size-base: 24px; --font-size-lg: 28px; --font-size-xl: 32px; --font-size-2xl: 38px; --font-size-nav: 12px; }
+.font-xlarge { --font-size-xs: 18px; --font-size-sm: 22px; --font-size-base: 28px; --font-size-lg: 32px; --font-size-xl: 36px; --font-size-2xl: 42px; --font-size-nav: 13px; }
 
 /* Ocean Calm theme */
 .theme-ocean {
