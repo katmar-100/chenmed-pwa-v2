@@ -9,7 +9,7 @@ import ReturnCapsules from '../components/ui/ReturnCapsules';
 import DoctorAvatar from '../components/features/DoctorAvatar';
 import StarRating from '../components/ui/StarRating';
 import { formatDate, dayLabel } from '../utils/helpers';
-import { Plus, MapPin, ChevronRight, Star } from 'lucide-react';
+import { Plus, ChevronRight, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 function ReviewStars({ rating, size = 14 }) {
@@ -63,7 +63,8 @@ export default function Appointments() {
           const dl = dayLabel(appt.date);
           return (
             <Card key={appt.id} to={`/appointments/${appt.id}`} delay={i * 0.08} padding="p-4">
-              <div className="flex items-start gap-4">
+              {/* Top line: avatar + star rating, vertically centered */}
+              <div className="flex items-center gap-3 mb-2">
                 <DoctorAvatar type={doc?.avatar || 'female-1'} size={64} />
                 <div className="flex-1 min-w-0">
                   {dl && (
@@ -71,24 +72,22 @@ export default function Appointments() {
                       {dl}
                     </span>
                   )}
-                  <div className="mb-1">
-                    <StarRating
-                      rating={doc?.rating || 5}
-                      size={14}
-                      onClick={doc?.reviews ? () => setReviewDoc(doc) : undefined}
-                    />
-                  </div>
-                  <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>{doc?.name || 'Doctor'}</p>
-                  <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{doc?.specialty}</p>
-                  <p className="mt-1 font-semibold" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text)' }}>
-                    {formatDate(appt.date)} at {appt.time}
-                  </p>
-                  <div className="flex items-center gap-1 mt-1">
-                    <MapPin size={14} style={{ color: 'var(--color-text-muted)' }} />
-                    <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{appt.location}</p>
-                  </div>
+                  <StarRating
+                    rating={doc?.rating || 5}
+                    size={14}
+                    onClick={doc?.reviews ? () => setReviewDoc(doc) : undefined}
+                  />
                 </div>
-                <ChevronRight size={20} className="flex-shrink-0 mt-6" style={{ color: 'var(--color-text-muted)' }} />
+                <ChevronRight size={20} className="flex-shrink-0" style={{ color: 'var(--color-text-muted)' }} />
+              </div>
+              {/* Doctor details below, full width */}
+              <div>
+                <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>{doc?.name || 'Doctor'}</p>
+                <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{doc?.specialty}</p>
+                <p className="mt-1 font-semibold" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text)' }}>
+                  {formatDate(appt.date)} at {appt.time}
+                </p>
+                <p className="mt-1" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{appt.location}</p>
               </div>
             </Card>
           );
