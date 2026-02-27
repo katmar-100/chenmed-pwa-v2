@@ -156,12 +156,9 @@ export default function Medications() {
                       <p className="font-semibold" style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-heading)' }}>
                         {med.name} <span style={{ fontWeight: 400, color: 'var(--color-text-muted)' }}>{med.dose}</span>
                       </p>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1.5">
+                        <TimeIcon size={14} style={{ color: 'var(--color-text-muted)' }} />
                         <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>{med.timeLabel}</p>
-                        <div className="flex items-center gap-1">
-                          <TimeIcon size={14} style={{ color: 'var(--color-text-muted)' }} />
-                          <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>{med.timeOfDay}</span>
-                        </div>
                       </div>
                     </div>
                     <div className="flex flex-col items-center gap-1.5">
